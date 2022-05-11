@@ -1,0 +1,43 @@
+.main-color {
+    background-color: #FF9100 !important;
+}
+
+.navbar-brand {
+    font-family: 'Berkshire Swash', cursive;
+    
+
+}
+.nav-link:hover::after {
+    content: '';
+    display: block;
+    border-bottom: 3px solid #E45826;
+    width: 50%;
+    margin: auto;
+    padding-bottom: 5px;
+    margin-bottom: -8px;
+}
+
+.jumbotron {
+    background-image: url(img/bg11.jpg);
+    background-size: cover;
+    height: 550px;  
+    text-align: center;
+    font-family: 'Abril Fatface';
+    
+      
+}
+
+
+.about {
+    font-family: 'Cormorant Garamond', serif;
+    
+}
+
+.icon-service {
+    width: 70px;
+    height: 70px;
+    border: solid #fff 2px;
+    border-radius: 50%;
+    color: #fff;
+}
+
