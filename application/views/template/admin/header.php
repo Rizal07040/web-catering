@@ -40,16 +40,14 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="<?php echo base_url('admin/datauser'); ?>">DATA USER</a></li>
-            <li><a class="dropdown-item" href="<?php echo base_url('admin/dataproduk'); ?>">DATA PRODUK</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url('admin/dataproduk'); ?>">DATA PRODUK</a></li>
+            
+            
           </ul>
         </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#menu">PESANAN</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#about">PEMBAYARAN</a>
+                    <a class="nav-link" href="<?=base_url('admin/tampilPesananAdmin');?>">PESANAN MASUK</a>
                 </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">CONTACT</a>

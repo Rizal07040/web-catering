@@ -35,6 +35,7 @@
                   <th scope="col">Nama Produk</th>
                   <th scope="col">Harga Produk</th>
                   <th scope="col">Keterangan</th>
+                  <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,12 +43,12 @@
                     <tr>
                   <th scope="row"><?php echo $prd['id_produk']; ?></th>
                   
-                  <td> <img src="<?= base_url('assets/img/') . $prd['gambar']; ?>"width="100%" class="img-fluid rounded-start " alt="..."> </td>
+                  <td> <img src="<?= base_url('assets/img/') . $prd['gambar']; ?>"width="100%" class="img-fluid  " alt="..."> </td>
                   <td> <?php echo $prd['nama_produk']; ?> </td>
                   <td> <?php echo $prd['harga_produk']; ?> </td>
                   <td> <?php echo $prd['keterangan']; ?> </td>
                   <td> <a href="<?php echo base_url(); ?>admin/hapusproduk/<?php echo $prd['id_produk']; ?>" class="btn btn-danger float-end" role="button" onclick = "return confirm('yakin');">HAPUS</a></td>
-                  <td> <a href="<?php echo base_url(); ?>admin/editproduk/<?php echo $prd['id_produk']; ?>" class="btn btn-secondary float-end" role="button" onclick="return confirm('yakin');">EDIT</a></td>
+                  <td> <a href="<?php echo base_url(); ?>admin/editproduk/<?php echo $prd['id_produk']; ?>" class="btn btn-secondary float-end" role="button" >EDIT</a></td>
             </tr>
                 <?php endforeach ?>
               </tbody>

@@ -17,7 +17,7 @@ class Produk_model extends CI_model{
       if("gambar"){
         $config['upload_path']          = './assets/img/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = '2048';
+        $config['max_size']             = '4000';
 
         $this->load->library('upload', $config);
         
@@ -51,7 +51,7 @@ public function editDataProduk($id)
     if ("gambar") {
         $config['upload_path']          = './assets/img/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = '2048';
+        $config['max_size']             = '4000';
 
         $this->load->library('upload', $config);
 

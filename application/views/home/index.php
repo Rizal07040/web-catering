@@ -94,10 +94,10 @@
     <div class="container">
       <h2 data-aos="zoom-out-right" class="text-center mb-5">MENU</h2>
        <?php $i=0; ?>
-      <div class="row row-cols-1 row-cols-md-4 g-4 ">
+      <div class="row ">
         <?php foreach($produk as $prd ) : ?>
-         <?php if (++$i == 5) break;{ ?>
-         <div class="col">
+         <?php if (++$i == 4) break;{ ?>
+         <div class="col ls-5 mt-4">
           <div  data-aos="flip-left" class="card bg-light h-100 border border-1" style="width: 18rem;">
             <a href="<?php echo base_url('assets/img/').$prd['gambar']; ?>" data-lightbox="menu-3" data-title="<?php echo $prd['nama_produk']; ?>">
               <img src="<?php echo base_url('assets/img/').$prd['gambar']; ?>"class="card-img-top" alt="">
@@ -107,7 +107,6 @@
               <h4 class="text-dark">Rp. <?php echo number_format( $prd['harga_produk'],0,',','.'); ?></h4>
             </div>
             <div class="mx-auto">
-            <a data-aos="zoom-out-right" type = "button" name="beli" class="btn btn-danger mb-4" href="<?= base_url('auth/'); ?>">DETAIL</a>
             <a data-aos="zoom-out-left" href="<?= base_url('auth/'); ?>" class="btn btn-success mb-4" role="button" >PESAN</a></td>
             
       </div>
@@ -131,7 +130,7 @@
   <div class="container-fluid mt-4 py-5 main-color">
     <div class="container ">
       <div class="row ">
-        <div data-aos="zoom-out-right" class="col-4 ">
+        <div data-aos="zoom-out-right" class="col-3 ">
           <h4 class="mb-4">Hubungi Kami :</h4>
           <p>Terhubung dengan kami untuk mengetahui lebih banyak tentang apa yang kami lakukan.</p>
           <p><i class="bi bi-phone"></i> Phone/WA : +62 852-3004-5300</p>

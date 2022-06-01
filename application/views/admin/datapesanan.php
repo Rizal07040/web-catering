@@ -26,7 +26,7 @@
             </div>
             <?php endif ?>
 <!-- Akhir Notifikasi -->
-                <h3>Pesanan Saya</h3>
+                <h3>Pesanan</h3>
                 
                 <div class="card">
                 <div class="card-header">
@@ -71,28 +71,68 @@
             </td>
                   
                   
-                <?php if ($pesan['status_bayar']==0){ ?>
-                    <td ><a href="<?php echo base_url(); ?>user/bayar/<?php echo $pesan['id_pesanan'];?>" class="btn btn-primary " role="button">BAYAR</a></td>
+                <?php if ($pesan['status_bayar']==1){ ?>
+                    <td ><button class="btn btn-success " data-bs-toggle="modal" data-bs-target="#cekBukti<?= $pesan['id_pesanan']; ?>">Cek Bukti</button></td>
                   <?php }else{ ?>
-                    <td> <a href="" class="btn btn-danger " role="button">Batalkan</a></td>
-                  <?php }?>
-                  
-                  
-                  
-                  
+                    
+                  <?php }?>  
             </tr>
-                <?php endforeach ?>
-              </tbody>
-            </table>
-            </div>  
 
+            
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</div>  
                
         </div>
     </div>
 </div>
 <!-- Akhir Lihat Data Produk -->
 
+        
 
 </div>
-
   </div>
+
+  
+  <!-- Modal -->
+  <?php foreach($pemesanan as $pesan) : ?>
+  <div class="modal fade" id="cekBukti<?php echo $pesan['id_pesanan'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bukti Pembayaran</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+
+                <tr>
+                    <th>Atas Nama </th>
+                    <th>:</th>
+                    <td><?php echo $pesan['atas_nama'];?></td>
+                </tr>
+                <tr>
+                    <th>Nama Bank </th>
+                    <th>:</th>
+                    <td><?php echo $pesan['nama_bank'];?></td>
+                </tr>
+                <tr>
+                    <th>No. Rek </th>
+                    <th>:</th>
+                    <td><?php echo $pesan['noRek'];?></td>
+                </tr>
+                
+            </table>
+        <img  src="<?= base_url('assets/img/') . $pesan['bukti']; ?>"width="50%" class="img-fluid " alt="...">
+
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Verifikasi</button>
+        </div>
+        </div>
+        </div>
+        </div>
+        <?php endforeach ?>
+        <!-- Akhir Modal -->   

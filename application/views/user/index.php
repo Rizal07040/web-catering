@@ -14,10 +14,10 @@
   
 
   
-        <div class="row row-cols-1 row-cols-md-4 g-4 mt-1 ">
+        <div class="row  ">
         <?php foreach($produk as $prd) : ?>
-         <div class="col">
-          <div  data-aos="flip-left" class="card bg-light h-100 border border-1" style="width: 18rem;">
+         <div class="col mt-4  ">
+          <div  data-aos="flip-left" class="card bg-light h-100 border border-1 " style="width: 18rem; ">
             <a href="<?php echo base_url('assets/img/').$prd['gambar']; ?>" data-lightbox="menu-3" data-title="<?php echo $prd['nama_produk']; ?>">
               <img src="<?php echo base_url('assets/img/').$prd['gambar']; ?>"class="card-img-top" alt="">
             </a>
@@ -26,7 +26,6 @@
               <h4 class="text-dark">Rp. <?php echo number_format( $prd['harga_produk'],0,',','.'); ?></h4>
             </div>
             <div class="mx-auto">
-            <button data-aos="zoom-out-right" type = "button" name="beli" class="btn btn-danger mb-4" >DETAIL</button>
             <a data-aos="zoom-out-left" href="<?php echo base_url(); ?>user/addCart/<?php echo $prd['id_produk']; ?>" class="btn btn-success mb-4" role="button" >PESAN</a></td>
             
       </div>

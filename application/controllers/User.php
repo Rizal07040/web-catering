@@ -28,7 +28,6 @@ class User extends CI_Controller
             'price'   => $ambilData->harga_produk,
             'name'    => $ambilData->nama_produk
     );
-    
     $this->cart->insert($data);
     redirect('user/index');
     }
@@ -88,8 +87,8 @@ class User extends CI_Controller
             $this->load->view('user/pengisianData');
             $this->load->view('template/home/footer'); 
         } else {
-            $this->cart->destroy();
             $this->Pemesanan_model->pesan();
+            $this->cart->destroy();
             $this->session->set_flashdata('notifikasi',' Pesanan Berhasil Diproses Silahkan Melakukan Pembayaran !!!');
             redirect('user/tampil_pesanan');
         }

@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-body">
                 <p>Total Pesanan :</p>
-                  <h1 class="text-warning">Rp. <?php echo number_format($pemesanan->total_pesanan)  ?>.-</h1>
+                  <h1 class="text-warning">Rp. <?php echo number_format($pemesanan['total_pesanan'])  ?>.-</h1>
             
                 
                 </div>
@@ -42,7 +42,7 @@
                 <div class="card-body">
                                                 
                 <!-- <div class="form-group"> -->
-                    <?= form_open_multipart('user/bayar/'.$pemesanan->id_pesanan); ?>
+                <form action="" method="post" enctype="multipart/form-data">
                     
                     <div class="mb-3">
                         <label for="atas_nama" class="form-label">Atas Nama</label>
@@ -66,10 +66,11 @@
 
                     <button type="submit" name="pembayaran" class="btn btn-warning " role="button">Bayar</button>
                     
-                    <a href="" class="btn btn-success" role="button">Kembali</a>
-                    <?= form_close() ?>
+                    <a href="<?= base_url();?> user/bayar/<?= $pemesanan['id_pesanan'];?>" class="btn btn-success" role="button">Kembali</a>
+                </form>
                 <!-- </div> -->
                 </div>
+
                
         </div>
     </div>

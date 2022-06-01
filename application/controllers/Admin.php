@@ -88,4 +88,12 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('flah', 'Dihapus');
         redirect('admin/dataproduk');
     }
+
+    public function tampilPesananAdmin(){
+          $data['judul'] = 'Pesanan | Catering Mekar Jaya';
+          $data['pemesanan'] = $this->Pemesanan_model->getAllPemesanan();
+           $this->load->view('template/admin/header', $data);
+           $this->load->view('admin/datapesanan',$data);
+           $this->load->view('template/home/footer'); 
+    }
 }
