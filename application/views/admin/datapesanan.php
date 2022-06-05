@@ -26,97 +26,153 @@
             </div>
             <?php endif ?>
 <!-- Akhir Notifikasi -->
-                <h3>Pesanan</h3>
-                
-                <div class="card">
-                <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
+        <h3>Pesanan</h3>
+<!-- Nav Tabs -->
+     <div class="card card-primary card-outline card-outline-tabs">
+        <div class="card-header p-0 border-bottom-0">
+           <ul class="nav nav-tabs" id="custom-tabs-four-tab" >
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="true" href="#">Belum Bayar</a>
+                    <a class="nav-link active" id="custom-tabs-four-home-tab" data-bs-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="false">Belum Verifikasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" id="custom-tabs-four-profile-tab" data-bs-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Sudah Verifikasi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled">Disabled</a>
                 </li>
-                </ul>
+            </ul>
             </div>
-            <div class="card-body">
-            <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Nama Pemesan</th>
-                  <th scope="col">Tanggal Pemesanan</th>
-                  <th scope="col">Tanggal Ambil</th>
-                  <th scope="col">Total</th>
-                  <th scope="col">Action</th>
-                  
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($pemesanan as $pesan) : ?>
-                    <tr>
-                  <th scope="row"><?php echo $pesan['id_pesanan']; ?></th>
-                  <td> <?php echo $pesan['nama']; ?> </td>
-                  <td> <?php echo $pesan['tgl_pemesanan']; ?> </td>
-                  <td> <?php echo $pesan['tgl_ambil']; ?> </td>
-                  <td> <?php echo $pesan['total_pesanan']; ?> <br>
-                  <?php if ($pesan['status_bayar']==0){ ?>
-                      <span class="badge bg-warning">Belum Bayar</span>
-                  <?php }else{ ?>
-                    <span class="badge bg-success">Tunggu Verifikasi</span>
-                  <?php }?>
-            </td>
-                  
-                  
-                <?php if ($pesan['status_bayar']==1){ ?>
-                    <td ><button class="btn btn-success " data-bs-toggle="modal" data-bs-target="#cekBukti<?= $pesan['id_pesanan']; ?>">Cek Bukti</button></td>
-                  <?php }else{ ?>
-                    
-                  <?php }?>  
-            </tr>
-
+ <!-- Akhir Nav Tabs -->          
             
-            <?php endforeach ?>
-        </tbody>
-    </table>
-</div>  
-               
+<!-- Nav Tabs Content -->
+                <div class="card-body">
+                <div class="tab-content" id="custom-tabs-four-tabContent">
+                    <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tabs">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Pemesan</th>
+                                <th scope="col">Tanggal Pemesanan</th>
+                                <th scope="col">Tanggal Ambil</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Action</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach($pemesanan as $pesan) : ?>
+                                <tr>
+                                    <th> <?php echo $no++ ?></th>
+                                    <td> <?php echo $pesan['nama']; ?> </td>
+                                    <td> <?php echo $pesan['tgl_pemesanan']; ?> </td>
+                                    <td> <?php echo $pesan['tgl_ambil']; ?> </td>
+                                    <td> <?php echo $pesan['total_pesanan']; ?> <br>
+                                    <?php if ($pesan['status_bayar']==0){ ?>
+                                        <span class="badge bg-warning">Belum Bayar</span>
+                                        <?php }else{ ?>
+                                            <span class="badge bg-warning">Sudah Bayar</span>
+                                            <span class="badge bg-success">Tunggu Verifikasi</span>
+                                            <?php }?>
+                                            </td>
+                    
+                    
+                                    <?php if ($pesan['status_bayar']==1){ ?>
+                                        
+                                        <td><button class="btn btn-success " data-bs-toggle="modal" data-bs-target="#cekBukti<?= $pesan['id_pesanan']; ?>">Cek Bukti</button></td>
+                                        <?php }else{ ?>
+                                            
+                                            <?php }?>  
+                                </tr>
+                        
+                        
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>  
+
+            <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tabs">
+            <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Pemesan</th>
+                                <th scope="col">Tanggal Pemesanan</th>
+                                <th scope="col">Tanggal Ambil</th>
+                                <th scope="col">Total</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach($pemesanan_verifikasi as $pesan) : ?>
+                                <tr>
+                                    <th ><?php echo $no++ ?></th>
+                                    <td> <?php echo $pesan['nama']; ?> </td>
+                                    <td> <?php echo $pesan['tgl_pemesanan']; ?> </td>
+                                    <td> <?php echo $pesan['tgl_ambil']; ?> </td>
+                                    <td> <?php echo $pesan['total_pesanan']; ?> <br>
+                                    <?php if ($pesan['status_verifikasi']==0){ ?>
+                                        <span class="badge bg-warning">Belum Bayar</span>
+                                        <?php }else{ ?>
+                                            <span class="badge bg-success">Sudah Verifikasi</span>
+                                            <?php }?>
+                                            </td>
+                    
+                    
+                                    <?php if ($pesan['status_verifikasi']==0){ ?>
+                                        
+                                        <td><button class="btn btn-success " data-bs-toggle="modal" data-bs-target="#cekBukti<?= $pesan['id_pesanan']; ?>">Cek Bukti</button></td>
+                                        <?php }else{ ?>
+                                            
+                                            <?php }?>  
+                                </tr>
+                        
+                        
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>     
         </div>
     </div>
+    <!-- Akhir Nav Tabs Content -->
+            </div>
+        </div> 
+    </div>
+                    
+
+
+
+
+
+
 </div>
-<!-- Akhir Lihat Data Produk -->
-
-        
-
 </div>
-  </div>
 
-  
-  <!-- Modal -->
-  <?php foreach($pemesanan as $pesan) : ?>
+
+<!-- Modal -->
+<?php foreach($pemesanan as $pesan) : ?>
   <div class="modal fade" id="cekBukti<?php echo $pesan['id_pesanan'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Bukti Pembayaran</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <table class="table">
-
-                <tr>
-                    <th>Atas Nama </th>
-                    <th>:</th>
-                    <td><?php echo $pesan['atas_nama'];?></td>
-                </tr>
-                <tr>
-                    <th>Nama Bank </th>
-                    <th>:</th>
-                    <td><?php echo $pesan['nama_bank'];?></td>
-                </tr>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Bukti Pembayaran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    
+                    <tr>
+                        <th>Atas Nama </th>
+                        <th>:</th>
+                        <td><?php echo $pesan['atas_nama'];?></td>
+                    </tr>
+                    <tr>
+                        <th>Nama Bank </th>
+                        <th>:</th>
+                        <td><?php echo $pesan['nama_bank'];?></td>
+                    </tr>
                 <tr>
                     <th>No. Rek </th>
                     <th>:</th>
@@ -129,7 +185,7 @@
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Verifikasi</button>
+        <a href="<?= base_url()?>admin/verifikasi/<?= $pesan['id_pesanan'];?> " type="button" class="btn btn-success">Verifikasi</a>
         </div>
         </div>
         </div>

@@ -91,9 +91,42 @@ class Admin extends CI_Controller
 
     public function tampilPesananAdmin(){
           $data['judul'] = 'Pesanan | Catering Mekar Jaya';
-          $data['pemesanan'] = $this->Pemesanan_model->getAllPemesanan();
+          $data['pemesanan'] = $this->Pemesanan_model->tampilPemesanan();
+          $data['pemesanan_verifikasi'] = $this->Pemesanan_model->tampilPemesananVerifikasi();
            $this->load->view('template/admin/header', $data);
            $this->load->view('admin/datapesanan',$data);
            $this->load->view('template/home/footer'); 
     }
+
+    public function verifikasi($id_pesanan){
+        $data['pemesanan_verifikasi'] = $this->Pemesanan_model->verifikasiPesanan($id_pesanan);
+
+            $this->load->view('template/admin/header', $data);
+            $this->load->view('admin/datapesanan',$data);
+            $this->load->view('template/home/footer');
+            
+            $this->session->set_flashdata('flah',' Pesanan Anda Sudah Berhasil Di Verifikasi  !!!');
+            redirect('admin/tampilPesananAdmin');
+        
+    }
+    public function laporanPenjualan(){
+        $judul['judul'] = 'Laporan | Catering Mekar Jaya';
+
+        $tanggal = $this->input->post('tanggal');
+        $bulan = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
+
+            $data = array
+            (
+                'tanggal' => $tanggal,
+                'bulan' => $bulan,
+                'tahun' => $tahun,
+                'laporan' => $this->Pemesanan_model->laporan($tanggal, $bulan ,$tahun),
+            );
+
+         $this->load->view('template/admin/header', $judul);
+         $this->load->view('admin/laporan',$data);
+         $this->load->view('template/home/footer'); 
+  }    
+    
 }

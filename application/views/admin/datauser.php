@@ -30,6 +30,7 @@
                   <th scope="col">Alamat</th>
                   <th scope="col">Telephone</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +42,7 @@
                   <td> <?php echo $usr['alamat']; ?> </td>
                 <td> <?php echo $usr['noHp']; ?> </td>
                 <td> <?php echo $usr['status']; ?> </td>
-                <td> <a href="<?php echo base_url(); ?>admin/hapususer/<?php echo $usr['id_user']; ?>" class="btn btn-danger float-end" role="button" onclick = "return confirm('yakin');">HAPUS</a></td>
+                <td> <a href="<?php echo base_url(); ?>admin/hapususer/<?php echo $usr['id_user']; ?>" class="btn btn-danger" role="button" onclick = "return confirm('yakin');"><i class="bi bi-trash"></i></a></td>
             </tr>
                 <?php endforeach ?>
               </tbody>

@@ -3,7 +3,7 @@
 class Pemesanan_model extends CI_model{
 
         public function getAllPemesanan(){
-                return $this->db->get('pemesanan')->result_array();
+                return $this->db->get_where('pemesanan')->result_array();
             }
 
         public function pesan()
@@ -12,9 +12,9 @@ class Pemesanan_model extends CI_model{
             
             $data = [
                 "id_user" => $this->session->userdata('id_user'),
-                "tgl_ambil" => $this->input->post('tgl_ambil',true),
+                "tgl_ambil" => $this->input->post('tgl_ambil'),
                 "nama" => $this->input->post('nama',true),
-                "tgl_pemesanan" => date('Y-m-d H:i:s',true),
+                "tgl_pemesanan" => date('Y-m-d H:i:s'),
                 "noHp" => $this->input->post('noHp',true),
                 "alamat" => $this->input->post('alamat', true),
                 "total_pesanan" => $this->input->post('total_pesanan', true)
@@ -40,10 +40,22 @@ class Pemesanan_model extends CI_model{
 
         return $this->db->get_where('pemesanan', ['id_user' => $this->session->userdata('id_user')])->result_array();
         }
+        public function batalPesanan($id_pesanan){
+
+            $this->db->where('id_pesanan', $id_pesanan);
+            $this->db->delete('pemesanan');
+        }
 
         public function tampilTotal($id_pesanan)
         {
             return $this->db->get_where('pemesanan', ['id_pesanan' => $id_pesanan])->row_array();
+        }
+
+        public function tampilPemesanan(){
+            return $this->db->get_where('pemesanan',['status_verifikasi' => 0])->result_array();
+        }
+        public function tampilPemesananVerifikasi(){
+            return $this->db->get_where('pemesanan',['status_verifikasi' => 1])->result_array();
         }
 
         public function tambahPembayaran($id_pesanan)
@@ -76,4 +88,28 @@ class Pemesanan_model extends CI_model{
             }
         }
 
+        public function verifikasiPesanan($id_pesanan)
+        {
+
+            $data = [
+                "status_verifikasi" =>'1'
+            ];
+
+
+            $this->db->where('id_pesanan', $id_pesanan);
+            $this->db->update('pemesanan', $data);
+               
+            }
+        public function laporan($tanggal, $bulan ,$tahun){
+            $this->db->select('*');
+            $this->db->from('detail_pemesanan'); 
+            $this->db->join('pemesanan', 'pemesanan.id_pesanan = detail_pemesanan.id_pemesanan', 'left');
+            $this->db->join('produk', 'produk.id_produk = detail_pemesanan.id_produk', 'left');
+            $this->db->where('DAY(pemesanan.tgl_pemesanan)',$tanggal);
+            $this->db->where('MONTH(pemesanan.tgl_pemesanan)',$bulan);
+            $this->db->where('YEAR(pemesanan.tgl_pemesanan)',$tahun); 
+            return $this->db->get()->result();
         }
+        }
+
+        

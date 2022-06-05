@@ -61,6 +61,7 @@
                             </div>
                             <!-- simpan database -->
                             <input type="hidden"  id="total_pesanan" name="total_pesanan" value="<?php echo $total_pesanan = $this->cart->total() + $u ?>">
+                            
                             <!-- akhir simpan -->
                             
                             <button type = "submit" name="proses" class="btn btn-primary float-end" >Proses</button> 

@@ -23,9 +23,9 @@
   </head>
   <body id="home">
     
-    <nav  class="navbar navbar-expand-lg fixed-top navbar-dark main-color ">
+    <nav  class="navbar navbar-expand-lg fixed-top navbar-dark main-color shadow p-3 mb-5 ">
          <div class="container">
-            <a class="navbar-brand" href="#home">Catering Mekar Jaya</a>
+            <a class="navbar-brand" href="<?= base_url('home/index/');?>">Catering Mekar Jaya</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -49,9 +49,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('admin/tampilPesananAdmin');?>">PESANAN MASUK</a>
                 </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">CONTACT</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=base_url('admin/laporanPenjualan');?>">LAPORAN</a>
+                </li>
                     
               </li>
               <li class="nav-item">
@@ -61,3 +61,4 @@
             </div>
         </div>
     </nav>
+    

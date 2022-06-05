@@ -11,12 +11,12 @@
 
     <!-- icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <!-- Font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
      <!-- My Css -->
      <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>style.css">
 
@@ -24,7 +24,7 @@
   </head>
   <body id="home">
     
-    <nav  class="navbar navbar-expand-lg fixed-top navbar-dark main-color">
+    <nav  class="navbar navbar-expand-lg fixed-top navbar-dark main-color shadow p-3 mb-5 ">
          <div class="container">
             <a data-aos="zoom-out-righht" class="navbar-brand" href="#home">Catering Mekar Jaya</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

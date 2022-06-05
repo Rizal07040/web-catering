@@ -24,7 +24,7 @@ class User extends CI_Controller
         $ambilData = $this->Produk_model->getProdukCart('produk',$id);
         $data = array(
             'id'      => $ambilData->id_produk,
-            'qty'     => 1,
+            'qty'     => 10,
             'price'   => $ambilData->harga_produk,
             'name'    => $ambilData->nama_produk
     );
@@ -97,9 +97,17 @@ class User extends CI_Controller
     public function tampil_pesanan(){
           $data['judul'] = 'Pesanan | Catering Mekar Jaya';
           $data['pemesanan'] = $this->Pemesanan_model->tampilPesanan();
+          $data['pemesanan_verifikasi'] = $this->Pemesanan_model->tampilPemesananVerifikasi();
            $this->load->view('template/user/header', $data);
            $this->load->view('user/pesanan',$data);
            $this->load->view('template/home/footer'); 
+    }
+    public function batalbeli($id_pesanan)
+    {
+
+        $this->Pemesanan_model->batalPesanan($id_pesanan);
+        $this->session->set_flashdata('flah', 'Pesanan Anda Telah DiBatalkan');
+        redirect('user/tampil_pesanan');
     }
     
     public function bayar($id_pesanan){
