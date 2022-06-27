@@ -23,7 +23,7 @@
                             <div class="form-group">
                                 <div class="mb-3">
                                     <label for="gambar" class="form-label">Input Gambar</label>
-                                    <input class="form-control form-control-sm" id="gambar" type="file" name="gambar">
+                                    <input class="form-control form-control-sm" id="gambar" type="file" name="gambar" value="<?= $produk['gambar']; ?>">
                                 </div>
 
                                 <div class="mb-3">

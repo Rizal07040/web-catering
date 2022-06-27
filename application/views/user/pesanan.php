@@ -82,12 +82,12 @@
                   
                   
                 <?php if ($pesan['status_bayar']==0){ ?>
-                    <td ><a href="<?php echo base_url(); ?>user/bayar/<?php echo $pesan['id_pesanan'];?>" class="btn btn-primary " role="button">BAYAR</a></td>
+                    <td ><a href="<?php echo base_url(); ?>user/bayar/<?php echo $pesan['id_pesanan'];?>" class="btn btn-primary " role="button"><i class="bi bi-credit-card-2-back-fill"></i></a></td>
                   <?php }else{ ?>
                    
                   <?php }?>
                   
-                  <td> <a href="<?php echo base_url(); ?>user/batalbeli/<?php echo $pesan['id_pesanan']; ?>" class="btn btn-danger" role="button" onclick = "return confirm('yakin');">Batalkan</a></td>
+                  <td> <a href="<?php echo base_url(); ?>user/batalbeli/<?php echo $pesan['id_pesanan']; ?>" class="btn btn-danger" role="button" onclick = "return confirm('yakin');"><i class="bi bi-trash"></i></a></td>
                   
                   
                   
