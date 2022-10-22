@@ -6,6 +6,7 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('form_validation');
        
     }
     public function index()
@@ -62,7 +63,7 @@ class User extends CI_Controller
     }
 
     // CeckOut Produk
-    public function pengisianData()
+    public function pengisiandata()
     {
         $data['judul'] = 'Proses | Catering Mekar Jaya';
         $data['user'] = $this->User_model->getUserById();
@@ -76,15 +77,24 @@ class User extends CI_Controller
     public function proses_pesanan()
     {
         $data['judul'] = 'Proses | Catering Mekar Jaya';
+        $data['user'] = $this->User_model->getUserById();
+        $data['kota'] = $this->Kota_model->getAllKota();
       
-
-        $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('noHp', 'NoHP', 'required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-
+        $this->form_validation->set_rules('tgl', 'Tanggal', 'numeric|valid_date[day,month,year]', [
+			'required' => 'Tanggal Harus Diisi!'
+		]);
+        $this->form_validation->set_rules('nama', 'Nama', 'trim|required', [
+			'required' => 'Nama Harus Diisi!'
+		]);
+        $this->form_validation->set_rules('noHp', '', 'trim|required', [
+			'required' => 'Nomor Handphone Harus Diisi!'
+		]);
+        $this->form_validation->set_rules('alamat', '', 'trim|required', [
+			'required' => 'Alamat Harus Diisi!'
+		]);
         if ($this->form_validation->run() == FAlSE) {
             $this->load->view('template/user/header', $data);
-            $this->load->view('user/pengisianData');
+            $this->load->view('user/pengisiandata');
             $this->load->view('template/home/footer'); 
         } else {
             $this->Pemesanan_model->pesan();

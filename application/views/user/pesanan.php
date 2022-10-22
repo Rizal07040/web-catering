@@ -31,12 +31,12 @@
                 
                 <div class="card card-primary card-outline card-outline-tabs">
                 <div class="card-header p-0 border-bottom-0">
-                <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                <ul class="nav nav-pills" id="custom-tabs-four-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="custom-tabs-four-home-tab" data-bs-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="false">Belum Verifikasi</a>
+                    <a class="nav-link active" id="custom-tabs-four-home-tab" data-bs-toggle="tab" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="false">Belum Verifikasi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-four-profile-tab" data-bs-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Sudah Verifikasi</a>
+                    <a class="nav-link" id="custom-tabs-four-profile-tab" data-bs-toggle="tab" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Sudah Verifikasi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled">Disabled</a>
@@ -67,12 +67,15 @@
             <tbody>
                 <?php $no = 1; ?>
                 <?php foreach($pemesanan as $pesan) : ?>
+                    <?php $tglPesan = $pesan['tgl_pemesanan']; ?>
+                    <?php $tglAmbil = $pesan['tgl_ambil']; ?>
                     <tr>
                   <th> <?php echo $no++ ?></th>
                   <td> <?php echo $pesan['nama']; ?> </td>
-                  <td> <?php echo $pesan['tgl_pemesanan']; ?> </td>
-                  <td> <?php echo $pesan['tgl_ambil']; ?> </td>
-                  <td> <?php echo $pesan['total_pesanan']; ?> <br>
+            
+                  <td> <?php echo date('d-m-Y', strtotime($tglPesan)) ?> </td>
+                  <td> <?php echo date('d-m-Y', strtotime($tglAmbil)) ?> </td>
+                  <td>Rp. <?php echo number_format($pesan['total_pesanan'])  ?>,- <br>
                   <?php if ($pesan['status_bayar']==0){ ?>
                       <span class="badge bg-warning">Belum Bayar</span>
                   <?php }else{ ?>
@@ -112,12 +115,14 @@
                         <tbody>
                             <?php $no = 1; ?>
                             <?php foreach($pemesanan_verifikasi as $pesan) : ?>
+                                <?php $tglPesan = $pesan['tgl_pemesanan']; ?>
+                                <?php $tglAmbil = $pesan['tgl_ambil']; ?>
                                 <tr>
                                     <th ><?php echo $no++ ?></th>
                                     <td> <?php echo $pesan['nama']; ?> </td>
-                                    <td> <?php echo $pesan['tgl_pemesanan']; ?> </td>
-                                    <td> <?php echo $pesan['tgl_ambil']; ?> </td>
-                                    <td> <?php echo $pesan['total_pesanan']; ?> <br>
+                                    <td> <?php echo date('d-m-Y', strtotime($tglPesan)) ?> </td>
+                                    <td> <?php echo date('d-m-Y', strtotime($tglAmbil)) ?> </td>
+                                    <td>Rp. <?php echo number_format($pesan['total_pesanan'])  ?>,- <br>
                                     <?php if ($pesan['status_verifikasi']==0){ ?>
                                         <span class="badge bg-warning">Belum Bayar</span>
                                         <?php }else{ ?>

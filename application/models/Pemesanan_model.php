@@ -22,9 +22,11 @@ class Pemesanan_model extends CI_model{
             ];
             $this->db->insert('pemesanan',$data);
             $id_pesan = $this->db->insert_id();
+            
 
             foreach ($this->cart->contents() as $item){
                 $data = [
+                    "id_user" => $this->session->userdata('id_user'),
                     'id_pemesanan'  => $id_pesan,
                     'id_produk'     =>$item['id'],
                     'nama_produk'   =>$item['name'],
@@ -105,6 +107,7 @@ class Pemesanan_model extends CI_model{
             $this->db->from('detail_pemesanan'); 
             $this->db->join('pemesanan', 'pemesanan.id_pesanan = detail_pemesanan.id_pemesanan', 'left');
             $this->db->join('produk', 'produk.id_produk = detail_pemesanan.id_produk', 'left');
+            $this->db->join('user', 'user.id_user = detail_pemesanan.id_user', 'left');
             $this->db->where('DAY(pemesanan.tgl_pemesanan)',$tanggal);
             $this->db->where('MONTH(pemesanan.tgl_pemesanan)',$bulan);
             $this->db->where('YEAR(pemesanan.tgl_pemesanan)',$tahun); 

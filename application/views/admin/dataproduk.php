@@ -4,8 +4,8 @@
 <!-- Lihat Data Produk -->
 
 <?php if ($this->session->flashdata('flah')) : ?>
-    <div class="row mt-3">
-        <div class="col-md-6">
+    <div class="row mt-4">
+        <div class="col-md-6 mt-4">
              <div class="alert alert-success alert-dismissible fade show" role="alert">
                  Data Produk <strong>berhasil</strong> <?php echo $this->session->flashdata('flah');?>.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -15,8 +15,8 @@
     <?php endif ?>
 
 
-    <div class="row mt-3">
-        <div class="col-md-6">
+    <div class="row mt-4">
+        <div class="col-md-6 mt-4">
             <a href="<?php echo base_url(); ?>admin/tambahproduk" class="btn btn-primary ">Tambah data Produk</a>
 
         </div>
@@ -50,7 +50,7 @@
                   <td> <?php echo $prd['keterangan']; ?> </td>
                  
                   <td> <a href="<?php echo base_url(); ?>admin/hapusproduk/<?php echo $prd['id_produk']; ?>" class="btn btn-danger" role="button" onclick = "return confirm('yakin');"><i class="bi bi-trash"></i></a></td>
-                  <td> <a href="<?php echo base_url(); ?>admin/editproduk/<?php echo $prd['id_produk']; ?>" class="btn btn-secondary" role="button" ><i class="bi bi-clipboard"></i></a></td>
+                  <td> <a href="<?php echo base_url(); ?>admin/editproduk/<?php echo $prd['id_produk']; ?>" class="btn btn-secondary" role="button" ><i class="bi bi-pencil-square"></i></a></td>
             </tr>
                 <?php endforeach ?>
               </tbody>

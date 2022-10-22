@@ -16,6 +16,9 @@
     padding-bottom: 5px;
     margin-bottom: -8px;
 }
+.nav-link.active{
+    color: aqua;
+}
 
 .jumbotron {
     background-image: url(img/bg11.jpg);

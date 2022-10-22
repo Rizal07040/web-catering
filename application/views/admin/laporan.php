@@ -13,6 +13,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">Nama</th>
                                 <th scope="col">Produk</th>
                                 <th scope="col">Harga_Produk</th>
                                 <th scope="col">Jumlah</th>
@@ -27,7 +28,8 @@
                                 $total = $lp->jumlah * $lp->harga;
                                 $grandTotal = $grandTotal + $total ?>
                                 <tr>
-                                    <th ><?php echo $no++ ?></th>
+                                    <th ><?php echo $no++ ?></th>                                  
+                                    <td> <?php echo $lp->nama ?> </td>
                                     <td> <?php echo $lp->nama_produk ?> </td>
                                     <td>Rp. <?php echo number_format($lp->harga) ?>,- </td>
                                     <td> <?php echo $lp->jumlah ?> </td>

@@ -63,12 +63,14 @@
                         <tbody>
                             <?php $no = 1; ?>
                             <?php foreach($pemesanan as $pesan) : ?>
+                                <?php $tglPesan = $pesan['tgl_pemesanan']; ?>
+                                <?php $tglAmbil = $pesan['tgl_ambil']; ?>
                                 <tr>
                                     <th> <?php echo $no++ ?></th>
                                     <td> <?php echo $pesan['nama']; ?> </td>
-                                    <td> <?php echo $pesan['tgl_pemesanan']; ?> </td>
-                                    <td> <?php echo $pesan['tgl_ambil']; ?> </td>
-                                    <td> <?php echo $pesan['total_pesanan']; ?> <br>
+                                    <td> <?php echo date('d-m-Y', strtotime($tglPesan)) ?> </td>
+                                    <td> <?php echo date('d-m-Y', strtotime($tglAmbil)) ?> </td>
+                                    <td>Rp. <?php echo number_format($pesan['total_pesanan'])  ?>,- <br>
                                     <?php if ($pesan['status_bayar']==0){ ?>
                                         <span class="badge bg-warning">Belum Bayar</span>
                                         <?php }else{ ?>
@@ -107,12 +109,14 @@
                         <tbody>
                             <?php $no = 1; ?>
                             <?php foreach($pemesanan_verifikasi as $pesan) : ?>
+                                <?php $tglPesan = $pesan['tgl_pemesanan']; ?>
+                                <?php $tglAmbil = $pesan['tgl_ambil']; ?>
                                 <tr>
                                     <th ><?php echo $no++ ?></th>
                                     <td> <?php echo $pesan['nama']; ?> </td>
-                                    <td> <?php echo $pesan['tgl_pemesanan']; ?> </td>
-                                    <td> <?php echo $pesan['tgl_ambil']; ?> </td>
-                                    <td> <?php echo $pesan['total_pesanan']; ?> <br>
+                                    <td> <?php echo date('d-m-Y', strtotime($tglPesan)) ?> </td>
+                                    <td> <?php echo date('d-m-Y', strtotime($tglAmbil)) ?> </td>
+                                    <td>Rp.<?php echo number_format($pesan['total_pesanan']) ?>,- <br>
                                     <?php if ($pesan['status_verifikasi']==0){ ?>
                                         <span class="badge bg-warning">Belum Bayar</span>
                                         <?php }else{ ?>

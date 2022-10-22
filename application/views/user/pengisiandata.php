@@ -14,9 +14,7 @@
 
                 <div class="card-body">
                     <?php if( validation_errors()) : ?>
-                            <div class="alert alert-danger" role="alert">
-                                <?php echo validation_errors();?>
-                            </div>
+                           
                             <?php endif; ?>
     
                             
@@ -29,34 +27,39 @@
                                 <div class="mb-3">
                                     <label for="tgl_ambil" class="form-label">Tanggal Ambil</label>
                                     <input type="date" class="form-control" id="tgl_ambil" name="tgl_ambil">
+                                    <?= form_error('tgl', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama Penerima</label>
-                                    <input type="text" class="form-control" id="nama" name="nama"  value="<?= $user['nama']; ?>"
-                                    >
+                                    <input type="text" class="form-control" id="nama" name="nama"  value="<?= $user['nama']; ?>">
+                                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
     
                                 <div class="mb-3">
                                     <label for="noHp" class="form-label">Nomor Telephone</label>
                                     <input type="number" class="form-control" id="noHp" name="noHp" value="<?= $user['noHp']; ?>">
+                                    <?= form_error('noHp', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 
                                 <div class="mb-3">
-                                <select class="form-select" aria-label="Default select example">
-                                <?php foreach ($kota as $k) : ?>
-                                
-                                <option value="<?= $k['id_kota']; ?>"><?=  $k['nama_kota']; ?> - <?= $k['ongkir']; ?> </option>
+                                <label class="form-label">Ongkir</label>
+                                <select class="form-select" aria-label="Default select example" id="ongkir" name="ongkir" onclick="OnSelectedIndexChange();">
+                                    <?php foreach ($kota as $k) : ?>
+                                        <!-- <?php $w = $k['ongkir']; ?>  -->
+                                <option  value="<?= $k['id_kota']; ?>"><?=  $k['nama_kota']; ?> - <?= $w = $k['ongkir'];?>  </option>
                               
                                 <?php endforeach; ?>
-                                 <?= $u = $k['ongkir']; ?>
+                                <?php var_dump('noHp') ?>
+                                 <?= $u = $w ?>
                                 </select>
                                 </div>
                                 <div class="mb-3">
                                     
                                 <label for="alamat" class="form-label">Alamat_lengkap</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat"
+                                    <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $user['alamat']; ?>"
                                     >
+                                    <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
                             <!-- simpan database -->
@@ -137,5 +140,19 @@
     </div>
           
     </div>
-        
+   
 </div>
+<script>
+    console.log('aaaa');
+var e = document.getElementById("ongkir");
+function OnSelectedIndexChange()
+{   
+    var value = e.value;
+    var text = e.options[e.selectedIndex].text;
+
+    console.log('text : ',e.options[e.selectedIndex]);
+    alert(text);
+
+}
+
+</script>
