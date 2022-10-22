@@ -11,7 +11,6 @@
                     <div class="card-header bg-warning">
                         Daftar Pesanan
                     </div>
-                    <h4>l;df;slf;</h4>
 
                     <div class="card-body">
                         <?php if (validation_errors()) : ?>
